@@ -1,0 +1,22 @@
+{
+  "plugins": [
+    [
+      "module-resolver",
+      {
+        "root": ["./src"],
+        "alias": {
+          "utils": "./src/utils",
+          "components": "./src/components",
+          "@assets": "./src/assets",
+          "@screens": "./src/screens",
+          "@hooks": "./src/hooks",
+          "@routes": "./src/routes",
+          "@services": "./src/services",
+          "@storage": "./src/storage",
+          "@theme": "./src/theme",
+          "@types": "./src/types"
+        }
+      }
+    ]
+  ]
+}
