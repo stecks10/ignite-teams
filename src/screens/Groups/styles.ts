@@ -1,13 +1,8 @@
+// src/components/Container.ts
 import styled from "styled-components/native";
 
 export const Container = styled.View`
   flex: 1;
-  background-color: #000;
-  justify-content: center;
-  align-items: center;
-  padding: 20px;
-`;
-
-export const Title = styled.Text`
-  color: #fff;
+  background-color: ${({ theme }) => theme.COLORS.GRAY_600};
+  padding: 25px;
 `;
