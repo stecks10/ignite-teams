@@ -11,7 +11,3 @@ export const Container = styled.View`
 export const Title = styled.Text`
   color: #fff;
 `;
-
-export const Button = styled.TouchableOpacity``;
-
-export const ButtonText = styled.Text``;
