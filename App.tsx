@@ -6,7 +6,7 @@ import {
 } from "@expo-google-fonts/roboto";
 import { SafeAreaView, StatusBar } from "react-native";
 import { ThemeProvider } from "styled-components/native";
-import { Groups } from "./src/screens/Groups";
+import { NewGroups } from "./src/screens/NewGroups";
 import theme from "./src/theme";
 
 export default function App() {
@@ -27,7 +27,7 @@ export default function App() {
         translucent
       />
       <SafeAreaView style={{ flex: 1, backgroundColor: theme.COLORS.GRAY_600 }}>
-        {fontsLoaded ? <Groups /> : <Loading />}
+        {fontsLoaded ? <NewGroups /> : <Loading />}
       </SafeAreaView>
     </ThemeProvider>
   );
