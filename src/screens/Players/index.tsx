@@ -2,7 +2,7 @@ import { ButtonIcon } from "@components/ButtonIcon";
 import { Header } from "@components/Header";
 import { Highlight } from "@components/Highlight";
 import { Input } from "@components/Input";
-import { Container } from "./styles";
+import { Container, Form } from "./styles";
 
 export function Players() {
   return (
@@ -12,8 +12,11 @@ export function Players() {
         title="Nome da turma"
         subtitle="Adicione a galera e se divirta"
       />
-      <Input placeholder="Nome do Participante" />
-      <ButtonIcon />
+
+      <Form>
+        <Input placeholder="Nome do Participante" autoCorrect={false} />
+        <ButtonIcon icon="add" />
+      </Form>
     </Container>
   );
 }
