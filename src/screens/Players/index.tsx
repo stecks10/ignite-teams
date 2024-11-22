@@ -8,6 +8,7 @@ import { Highlight } from "@components/Highlight";
 import { Input } from "@components/Input";
 import { PlayerCard } from "@components/PlayerCard";
 
+import { Button } from "@components/Button";
 import { ListEmpty } from "@components/ListEmpty";
 import { Container, Form, HeaderList, NumberOfPlayers } from "./styles";
 
@@ -62,6 +63,7 @@ export function Players() {
         ]}
         showsVerticalScrollIndicator={false}
       />
+      <Button title="Remover turma" type="SECONDARY" />
     </Container>
   );
 }
