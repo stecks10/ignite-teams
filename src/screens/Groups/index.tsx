@@ -16,9 +16,10 @@ export function Groups({}) {
   function handleNewGroup() {
     navigation.navigate("new");
   }
+
   return (
     <Container>
-      <Header showBackButton />
+      <Header />
       <Highlight title="Turmas " subtitle="Jogue com sua turma" />
       <FlatList
         data={groups}
