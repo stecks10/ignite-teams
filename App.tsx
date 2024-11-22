@@ -5,8 +5,8 @@ import {
   useFonts,
 } from "@expo-google-fonts/roboto";
 import { SafeAreaView, StatusBar } from "react-native";
+import { Routes } from "src/routes/indes";
 import { ThemeProvider } from "styled-components/native";
-import { Players } from "./src/screens/Players";
 import theme from "./src/theme";
 
 export default function App() {
@@ -27,7 +27,7 @@ export default function App() {
         translucent
       />
       <SafeAreaView style={{ flex: 1, backgroundColor: theme.COLORS.GRAY_600 }}>
-        {fontsLoaded ? <Players /> : <Loading />}
+        {fontsLoaded ? <Routes /> : <Loading />}
       </SafeAreaView>
     </ThemeProvider>
   );
