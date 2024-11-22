@@ -4,7 +4,7 @@ import {
   Roboto_700Bold,
   useFonts,
 } from "@expo-google-fonts/roboto";
-import { SafeAreaView, StatusBar } from "react-native";
+import { StatusBar } from "react-native";
 import { Routes } from "src/routes/indes";
 import { ThemeProvider } from "styled-components/native";
 import theme from "./src/theme";
@@ -26,9 +26,7 @@ export default function App() {
         backgroundColor="transparent"
         translucent
       />
-      <SafeAreaView style={{ flex: 1, backgroundColor: theme.COLORS.GRAY_600 }}>
-        {fontsLoaded ? <Routes /> : <Loading />}
-      </SafeAreaView>
+      {fontsLoaded ? <Routes /> : <Loading />}
     </ThemeProvider>
   );
 }
