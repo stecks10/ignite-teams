@@ -28,6 +28,7 @@ export function Groups({}) {
   }
 
   useEffect(() => {
+    console.log("useEffect");
     fetchGroups();
   }, []);
 
