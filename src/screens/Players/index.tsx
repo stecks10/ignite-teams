@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Alert, FlatList } from "react-native";
 
 import { ButtonIcon } from "@components/ButtonIcon";
@@ -37,6 +37,8 @@ export function Players() {
 
     try {
       await playerAddByGroup(newPlayer, group);
+
+      fetchPlayersByTeam();
     } catch (error) {
       if (error instanceof AppError) {
         return Alert.alert("Nova pessoa", error.message);
@@ -54,6 +56,10 @@ export function Players() {
       Alert.alert("Pessoas", "Não foi possível carregar as pessoas");
     }
   }
+
+  useEffect(() => {
+    fetchPlayersByTeam();
+  }, [team]);
 
   return (
     <Container>
@@ -90,9 +96,9 @@ export function Players() {
 
       <FlatList
         data={players}
-        keyExtractor={(item) => item}
+        keyExtractor={(item) => item.name}
         renderItem={({ item }) => (
-          <PlayerCard name={item} onRemove={() => {}} />
+          <PlayerCard name={item.name} onRemove={() => {}} />
         )}
         ListEmptyComponent={() => (
           <ListEmpty message="Não há pessoas nesse time" />
