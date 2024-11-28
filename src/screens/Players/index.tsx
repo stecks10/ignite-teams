@@ -11,12 +11,15 @@ import { PlayerCard } from "@components/PlayerCard";
 import { Button } from "@components/Button";
 import { ListEmpty } from "@components/ListEmpty";
 import { useRoute } from "@react-navigation/native";
+import { groupRemoveByName } from "@storage/group/groupRemoveByName";
 import { playerAddByGroup } from "@storage/players/playerAddByGroup";
 import { playerGetByGroupAndTeam } from "@storage/players/playerGetByGroupAndTeam";
 import { playerRemoveByGroup } from "@storage/players/playerRemoveByGroup";
 import { PlayerStorageDTO } from "@storage/players/PlayerStorageDTO";
 import { AppError } from "@utils/AppError";
 import { Container, Form, HeaderList, NumberOfPlayers } from "./styles";
+
+import { useNavigation } from "@react-navigation/native";
 
 export function Players() {
   const [newPlayerName, setNewPlayerName] = useState("");
@@ -27,6 +30,8 @@ export function Players() {
   const { group } = route.params as { group: string };
 
   const newPlayerNameInputRef = useRef<TextInput>(null);
+
+  const navigation = useNavigation();
 
   async function handleAddPlayer() {
     if (newPlayerName.length === 0) {
@@ -70,6 +75,22 @@ export function Players() {
     } catch (error) {
       Alert.alert("Remover pessoa", "Não foi possível remover essa pessoa");
     }
+  }
+
+  async function groupRemove() {
+    try {
+      await groupRemoveByName(group);
+      navigation.navigate("groups");
+    } catch (error) {
+      Alert.alert("Remover turma", "Não foi possível remover essa turma");
+    }
+  }
+
+  async function handleGroupRemove() {
+    Alert.alert("Remover", "Deseja remover a turma?", [
+      { text: "Não", style: "cancel" },
+      { text: "Sim", onPress: () => groupRemove() },
+    ]);
   }
 
   useEffect(() => {
@@ -131,7 +152,11 @@ export function Players() {
         ]}
         showsVerticalScrollIndicator={false}
       />
-      <Button title="Remover turma" type="SECONDARY" />
+      <Button
+        title="Remover turma"
+        type="SECONDARY"
+        onPress={handleGroupRemove}
+      />
     </Container>
   );
 }
